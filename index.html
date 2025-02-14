@@ -42,9 +42,9 @@
         .buttons {
             margin-top: 20px;
             display: flex;
-            justify-content: center; /* Alinea los botones horizontalmente */
-            align-items: center; /* Alinea los botones verticalmente */
-            gap: 15px; /* Espacio entre los botones */
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
         }
         .btn {
             padding: 12px 24px;
@@ -95,6 +95,62 @@
             transform: translate(-50%, -50%);
             animation: heartFade 1s ease-out forwards;
         }
+
+        /* Fuegos Artificiales */
+        .firework {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: yellow;
+            box-shadow: 0 0 15px rgba(255, 255, 0, 0.7);
+            animation: fireworkAnimation 1s forwards;
+        }
+        @keyframes fireworkAnimation {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(3);
+                opacity: 0.6;
+            }
+            100% {
+                transform: scale(0);
+                opacity: 0;
+            }
+        }
+        /* Fuegos Artificiales desde las orillas */
+        .firework-left {
+            top: 50%;
+            left: 0;
+            animation: fireworkFromLeft 1s forwards;
+        }
+        .firework-right {
+            top: 50%;
+            right: 0;
+            animation: fireworkFromRight 1s forwards;
+        }
+        @keyframes fireworkFromLeft {
+            0% {
+                transform: translateX(-50%) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(0) scale(1.5);
+                opacity: 0;
+            }
+        }
+        @keyframes fireworkFromRight {
+            0% {
+                transform: translateX(50%) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(0) scale(1.5);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -104,7 +160,7 @@
             <img src="https://media.tenor.com/efbi1EpFlVUAAAAi/bugcat-capoo.gif" alt="Cute Capoo GIF">
         </div>
         <div class="buttons">
-            <button class="btn" id="yesButton">Sí</button>
+            <button class="btn" id="yesButton" onclick="showFireworks()">Sí</button>
             <button class="btn" id="noButton" onclick="growAndShrink()">No</button>
         </div>
     </div>
@@ -128,6 +184,17 @@
             // Reducir el tamaño del botón "No"
             var currentSizeNo = parseInt(window.getComputedStyle(noButton).fontSize);
             noButton.style.fontSize = (currentSizeNo * 0.9) + "px";
+        }
+
+        function showFireworks() {
+            // Crear fuegos artificiales en las orillas
+            var leftFirework = document.createElement("div");
+            leftFirework.classList.add("firework", "firework-left");
+            document.body.appendChild(leftFirework);
+            
+            var rightFirework = document.createElement("div");
+            rightFirework.classList.add("firework", "firework-right");
+            document.body.appendChild(rightFirework);
         }
     </script>
 </body>
