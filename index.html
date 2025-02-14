@@ -42,8 +42,9 @@
         .buttons {
             margin-top: 20px;
             display: flex;
-            justify-content: center;
-            gap: 15px;
+            justify-content: center; /* Centra los botones horizontalmente */
+            align-items: center; /* Alinea los botones verticalmente */
+            gap: 15px; /* Espacio entre los botones */
         }
         .btn {
             padding: 12px 24px;
@@ -123,11 +124,11 @@
             
             // Aumentar el tamaño del botón "Sí"
             var currentSizeYes = parseInt(window.getComputedStyle(yesButton).fontSize);
-            yesButton.style.fontSize = (currentSizeYes * 50) + "px";
+            yesButton.style.fontSize = (currentSizeYes * 1.1) + "px";
             
             // Reducir el tamaño del botón "No"
             var currentSizeNo = parseInt(window.getComputedStyle(noButton).fontSize);
-            noButton.style.fontSize = (currentSizeNo * 50) + "px";
+            noButton.style.fontSize = (currentSizeNo * 0.9) + "px";
         }
     </script>
 </body>
