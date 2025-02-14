@@ -43,7 +43,6 @@
             margin-top: 20px;
             display: flex;
             justify-content: center;
-            align-items: center;
             gap: 15px;
         }
         .btn {
@@ -67,6 +66,7 @@
         #noButton {
             background-color: #ff4757;
             border-color: #ff4757;
+            position: absolute;
         }
         #noButton:hover {
             background-color: white;
@@ -93,109 +93,4 @@
             background-color: #ff6b81;
             border-radius: 50%;
             transform: translate(-50%, -50%);
-            animation: heartFade 1s ease-out forwards;
-        }
-
-        /* Fuegos Artificiales */
-        .firework {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: yellow;
-            box-shadow: 0 0 15px rgba(255, 255, 0, 0.7);
-            animation: fireworkAnimation 1s forwards;
-        }
-        @keyframes fireworkAnimation {
-            0% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            50% {
-                transform: scale(3);
-                opacity: 0.6;
-            }
-            100% {
-                transform: scale(0);
-                opacity: 0;
-            }
-        }
-        /* Fuegos Artificiales desde las orillas */
-        .firework-left {
-            top: 50%;
-            left: 0;
-            animation: fireworkFromLeft 1s forwards;
-        }
-        .firework-right {
-            top: 50%;
-            right: 0;
-            animation: fireworkFromRight 1s forwards;
-        }
-        @keyframes fireworkFromLeft {
-            0% {
-                transform: translateX(-50%) scale(1);
-                opacity: 1;
-            }
-            100% {
-                transform: translateX(0) scale(1.5);
-                opacity: 0;
-            }
-        }
-        @keyframes fireworkFromRight {
-            0% {
-                transform: translateX(50%) scale(1);
-                opacity: 1;
-            }
-            100% {
-                transform: translateX(0) scale(1.5);
-                opacity: 0;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1 class="header_text">¿Quieres ser mi San Valentín? 💖</h1>
-        <div class="gif_container">
-            <img src="https://media.tenor.com/efbi1EpFlVUAAAAi/bugcat-capoo.gif" alt="Cute Capoo GIF">
-        </div>
-        <div class="buttons">
-            <button class="btn" id="yesButton" onclick="showFireworks()">Sí</button>
-            <button class="btn" id="noButton" onclick="growAndShrink()">No</button>
-        </div>
-    </div>
-    <script>
-        function moveButton() {
-            var button = document.getElementById("noButton");
-            var x = Math.random() * (window.innerWidth - button.offsetWidth);
-            var y = Math.random() * (window.innerHeight - button.offsetHeight);
-            button.style.left = x + "px";
-            button.style.top = y + "px";
-        }
-
-        function growAndShrink() {
-            var yesButton = document.getElementById("yesButton");
-            var noButton = document.getElementById("noButton");
-            
-            // Aumentar el tamaño del botón "Sí"
-            var currentSizeYes = parseInt(window.getComputedStyle(yesButton).fontSize);
-            yesButton.style.fontSize = (currentSizeYes * 1.1) + "px";
-            
-            // Reducir el tamaño del botón "No"
-            var currentSizeNo = parseInt(window.getComputedStyle(noButton).fontSize);
-            noButton.style.fontSize = (currentSizeNo * 0.9) + "px";
-        }
-
-        function showFireworks() {
-            // Crear fuegos artificiales en las orillas
-            var leftFirework = document.createElement("div");
-            leftFirework.classList.add("firework", "firework-left");
-            document.body.appendChild(leftFirework);
-            
-            var rightFirework = document.createElement("div");
-            rightFirework.classList.add("firework", "firework-right");
-            document.body.appendChild(rightFirework);
-        }
-    </script>
-</body>
-</html>
+            animation: heartFade 1s ease-out 
